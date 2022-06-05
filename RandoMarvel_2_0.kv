@@ -1,0 +1,431 @@
+#:kivy 2.0.0
+
+WindowManager:
+    id: wm
+    Main_Window:
+    Keywords_Window:
+    Scheme_Window:
+    Search_Window:
+
+    
+<Button>
+    text_size: root.width*9/10, None
+    halign: "center"
+    font_size: 45
+    background_normal: ''
+    bold: True
+    outline_color: (0,0,0)
+    outline_width: 3
+    
+<Label>
+    text_size: root.width*9/10,None
+    halign: "center"
+    font_size: 45
+    bold: True
+    outline_color: (0,0,0)
+    outline_width: 3
+
+<Label_Scroll>
+    text_size: root.width*9/10,None
+    size_hint_y: None
+    height: self.texture_size[1]
+    halign: "center"
+    font_size: 45
+    bold: False
+    outline_color: (0,0,0)
+    outline_width: 3
+    padding: 5, 10
+
+
+<Main_Window>:
+    name: "main_window"
+
+    BoxLayout:
+        orientation:'vertical'
+        size: root.width, root.height
+
+        spacing: 5
+        padding: 5
+        
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint:(1, .15)
+
+            Label:
+                id: instructions
+                text:"Select Number of Players\nor Categories to be Randomized"
+                background_color:(0,0,8/10.0,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            Button:
+                id: search_button_home
+                size_hint:(.25,1)
+                background_color: 0,0,0,1
+
+                on_release:
+                    root.Go_To_Search()
+                    #app.root.current = "search_window"
+                    #root.manager.transition.direction = "left"
+
+                Image:
+                    source: "img/search.png"
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+
+ 
+
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint:(1,.15)
+
+            spacing: 5
+
+            Button:
+                text:"1"
+                background_color: (0,0,8/10.0,1)
+                on_press: root.Randomize_1P()
+                
+            Button:
+                text:"2"
+                background_color: (0,0,8/10.0,1)
+                on_press: root.Randomize_2P()
+                            
+            Button:
+                text:"3"
+                background_color: (0,0,8/10.0,1)
+                on_press: root.Randomize_3P()
+                
+            Button:
+                text:"4"
+                background_color: (0,0,8/10.0,1)
+                on_press: root.Randomize_4P()
+                
+            Button:
+                text:"Reset"
+                background_color: (0.1,0.1,0.1,1)
+                on_press: root.Reset()
+                
+        GridLayout:
+            cols:2
+            spacing: 5
+            
+            BoxLayout:
+
+                orientation:'vertical'
+                size_hint: (.4,1)
+                spacing:5
+
+                
+                Button:
+                    text:"Scheme"
+                    background_color: (45/255, 145/255, 73/255, 1)
+                    on_press: root.Show1Scheme()
+                                        
+                Button:
+                    text:"Mastermind"
+                    background_color: (119/255.0, 50/255.0, 168/255.0,1)
+                    on_press: root.Show1Mastermind()
+                
+                Button:
+                    text:"Villains"
+                    background_color: (1,0,0,1)
+                    on_press: root.Show1Villain()
+
+                Button:
+                    text:"Henchmen"
+                    background_color: (235/255.0, 156/255.0, 38/255.0,1)
+                    on_press: root.Show1Henchman()     
+
+
+                Button:
+                    text:"Heroes"
+                    background_color: (48/255.0,99/255.0,194/255.0,1)
+                    on_press:root.Show1Heroe()
+
+                Label:
+                    text:"Bystanders"
+                    background_color: (8/10.0,8/10.0,0,1)
+                    outline_width: 2
+                    canvas.before:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+            BoxLayout:
+
+                orientation:'vertical'
+                spacing:5
+
+                Button:
+                    id: scheme_lab
+                    text:""
+                    background_color: (45/255.0, 145/255.0, 73/255.0, 1)
+                    on_release: root.SchemeDescription()
+                                        
+                                                
+                Button:
+                    id: mastermind_lab
+                    text:""
+                    background_color: (119/255.0, 50/255.0, 168/255.0,1)
+                    on_release: root.MastermindsKeywords()
+                               
+                Button:
+                    id: villains_lab
+                    text:""
+                    background_color: (1,0,0,1)
+                    on_release: root.VillainsKeywords()
+                    
+                Button:
+                    id: henchmen_lab
+                    text:""
+                    background_color: (235/255.0, 156/255.0, 38/255.0,1)
+                    on_release: root.HenchmenKeywords()
+
+                Button:
+                    id: heroes_lab
+                    text:""
+                    background_color: (48/255.0,99/255.0,194/255.0,1)
+                    on_release: root.HeroesKeywords()
+
+                Label:
+                    id: bystanders_lab
+                    text:""
+                    background_color: (8/10.0,8/10.0,0,1)
+                    canvas.before:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint:(1,.15)
+
+            spacing: 5
+
+            Button:
+                text:"Save Game"
+                background_color: (0.1,0.1,0.1,1)
+                on_release: root.Save_Game()
+
+            Button:
+                text:"Load Game"
+                background_color: (0.1,0.1,0.1,1)
+                on_release: root.Load_Game()
+
+
+
+<Keywords_Window>:
+    name: "keywords_window"
+
+    BoxLayout:
+        id: keywords_box
+        orientation:'vertical'
+        size: root.width, root.height
+        
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint: 1, .15
+            padding: 5
+
+            Button:
+                size_hint: .15, 1
+                text: "<"
+                background_color:(0,0,0,1)
+                background_normal: ""
+                font_size: 90
+                on_release:
+                    app.root.current = "main_window"
+                    root.manager.transition.direction = "right"
+
+                Image:
+                    source: "img/back.png"
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+            
+            Label:
+                id: keywords_title
+                text: "Keywords"
+                spacing: 5,5
+                padding: 5,5
+                background_color:(0,0,8/10.0,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            Button:
+                id: search_button_keywords
+                size_hint:(.2,1)
+                background_color: 0,0,0,1
+
+                on_release:
+                    root.Go_Search()
+                    #app.root.current = "search_window"
+                    #root.manager.transition.direction = "left"
+
+                Image:
+                    source: "img/search.png"
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                        
+                        
+        BoxLayout:
+            id: accordion_container
+            orientation: 'vertical'
+
+
+
+<Scheme_Window>:
+    name: "scheme_window"
+
+    BoxLayout:
+        id: scheme_box
+        orientation:'vertical'
+        size: root.width, root.height
+        
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint: 1, .15
+            padding: 5
+
+            Button:
+                size_hint: .15, 1
+                text: "<"
+                background_color:(0,0,0,1)
+                background_normal: ""
+                font_size: 90
+                on_release:
+                    app.root.current = "main_window"
+                    root.manager.transition.direction = "right"
+
+                Image:
+                    source: "img/back.png"
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+            
+            Label:
+                id: scheme_title
+                text: "Scheme"
+                spacing: 5,5
+                padding: 5,5
+                background_color:(45/255.0, 145/255.0, 73/255.0, 1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            Button:
+                id: search_button_scheme
+                size_hint:(.2,1)
+                background_color: 0,0,0,1
+
+                on_release:
+                    root.Go_Search()
+                    #app.root.current = "search_window"
+                    #root.manager.transition.direction = "left"
+
+                Image:
+                    source: "img/search.png"
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                        
+                        
+        BoxLayout:
+            id: scheme_container
+            orientation: 'vertical'
+            spacing: 5
+
+
+<Search_Window>:
+    name: "search_window"
+
+    BoxLayout:
+        id: search_box
+        orientation:'vertical'
+        size: root.width, root.height
+        
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint: 1, .15
+            padding: 5
+
+            Button:
+                size_hint: .15, 1
+                text: "<"
+                background_color:(0,0,0,1)
+                background_normal: ""
+                font_size: 90
+                on_release:
+                    app.root.current = "main_window"
+                    root.manager.transition.direction = "right"
+
+                Image:
+                    source: "img/back.png"
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+            
+            Label:
+                id: search_title
+                text: "Search for Schemes, Enemies, Heroes or Keywords"
+                spacing: 5,5
+                padding: 5,5
+                background_color:(0,0,8/10.0,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            Label:
+                size_hint: .15,1
+                background_color:(0,0,8/10.0,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+                        
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint: 1, .15
+            padding: 5
+            
+            TextInput:
+                id: textinput
+                font_size: 35
+                multiline: False
+                            
+                on_text_validate: root.Search_Button()
+
+            Button:
+                size_hint:(.2,1)
+                on_release: root.Search_Button()
+                background_color: (0,0,0,1)
+                
+                Image:
+                    source: "img/search.png"
+                    size: 75,75
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+
+
+                        
+        BoxLayout:
+            id: search_container
+            orientation: 'vertical'
+            spacing: 5
