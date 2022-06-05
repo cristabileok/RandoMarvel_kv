@@ -1,7 +1,7 @@
 # RandoMarvel_kv
 Randomizer mobile App for Marvel Legendary card game.
 <br>
-<b>Randomize</>
+<b>Randomize</b>
   <br>
   Select number of players to create a full game randomize instance with the apropriate number of Villains, Henchmen, Heroes and Bystanders.
   <br>
@@ -17,7 +17,7 @@ Randomizer mobile App for Marvel Legendary card game.
   <br>
   Select the Mastermind, Villains, Henchmen or Heroes to see a complete list of all their Keywords, and an explanation of how they work.
   <br>
-<b>Disclaimer</>
+<b>Disclaimer</b>
   <br>
   I don not own Marvel nor Marvel Legendary.
   <br>
