@@ -17,6 +17,10 @@ Randomizer mobile App for Marvel Legendary card game.
   <br>
   Select the Mastermind, Villains, Henchmen or Heroes to see a complete list of all their Keywords, and an explanation of how they work.
   <br>
+<b>Save and Load</b>
+  <br>
+  You can Save one instance of a randomly created game for later use, and Load it later.
+  <br>
 <b>Disclaimer</b>
   <br>
   I don not own Marvel nor Marvel Legendary.
